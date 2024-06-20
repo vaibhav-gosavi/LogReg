@@ -26,25 +26,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Reading .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-# Debugging print statements
-print("Reading environment variables...")
-print(f"SECRET_KEY: {env('SECRET_KEY', default='')}")
-print(f"DATABASE_URL: {env('DATABASE_URL', default='')}")
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l%oygcx!#he6sqalt42#z@#*ou+bt6(v@c=ps(jj@wo5$02j3&'
+SECRET_KEY = env('SECRET_KEY', default='django-insecure-l%oygcx!#he6sqalt42#z@#*ou+bt6(v@c=ps(jj@wo5$02j3&')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env('DEBUG')
-DEBUG = True
+DEBUG = env('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['logreg-ojjc.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['logreg-ojjc.onrender.com', '127.0.0.1', 'localhost'])
 
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=['https://logreg-ojjc.onrender.com'])
 
-CSRF_TRUSTED_ORIGINS = ['https://logreg-ojjc.onrender.com']
 # Application definition
 
 INSTALLED_APPS = [
