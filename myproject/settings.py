@@ -43,6 +43,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [ '127.0.0.1', 'localhost','logreg-ojjc.onrender.com']
 
+
+CSRF_TRUSTED_ORIGINS = ['https://logreg-ojjc.onrender.com']
 # Application definition
 
 INSTALLED_APPS = [
