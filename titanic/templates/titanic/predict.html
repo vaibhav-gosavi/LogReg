@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://wallpaper.dog/large/20354880.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-900 bg-opacity-75">
+    <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center mb-6">Titanic Survival Prediction</h1>
+        <form method="post" action="{% url 'predict_survival' %}" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label for="Pclass" class="block text-sm font-medium text-gray-700">Passenger Class:</label>
+                <select name="Pclass" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div>
+                <label for="Age" class="block text-sm font-medium text-gray-700">Age:</label>
+                <input type="number" name="Age" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
+                <label for="SibSp" class="block text-sm font-medium text-gray-700">Number of Siblings/Spouses Aboard:</label>
+                <input type="number" name="SibSp" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
+                <label for="Parch" class="block text-sm font-medium text-gray-700">Number of Parents/Children Aboard:</label>
+                <input type="number" name="Parch" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
+                <label for="Fare" class="block text-sm font-medium text-gray-700">Fare:</label>
+                <input type="number" step="any" name="Fare" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
+                <label for="Sex" class="block text-sm font-medium text-gray-700">Sex:</label>
+                <select name="Sex" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="Embarked" class="block text-sm font-medium text-gray-700">Port of Embarkation:</label>
+                <select name="Embarked" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+                    <option value="0">Cherbourg</option>
+                    <option value="1">Queenstown</option>
+                    <option value="2">Southampton</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Predict</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
