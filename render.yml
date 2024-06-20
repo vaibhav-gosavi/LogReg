@@ -12,7 +12,7 @@ services:
       - key: SECRET_KEY
         value: your_secret_key_here
       - key: DEBUG
-        value: "True"
+        value: "False"
     buildCommand: docker build -t my-django-app .
     startCommand: docker run -p 8000:8000 my-django-app
 
@@ -23,4 +23,3 @@ services:
       databaseName: mydatabase
       user: myuser
       password: mypassword
-      
